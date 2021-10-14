@@ -1,0 +1,43 @@
+@font-face{
+    font-family: 'MyWebFont';
+    src: url('../fonts/Roboto-Thin.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.mytext1 {
+    font-family: 'MyWebFont';
+}
+
+nav {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.grid-container{
+    display:grid;
+    grid-template-rows: 80px 80px 80px;
+    grid-template-columns: 60px 300px;
+    width:20%;
+    align-items: center;
+}
+
+.img-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.img-wrap h5 {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 55%;
+}
+
+#dish {
+    display: table; /* keep the background color wrapped tight */
+    margin: 0px auto 0px auto; /* keep the table centered */
+    padding: 5px;
+    font-size:20px;
+    background-color:black;
+    color:#ffffff;
+}

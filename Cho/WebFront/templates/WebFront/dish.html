@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}{{ dish.name }}{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 my-5 text-center">
+                <img src="{{ fuel.image.url }}" width="88">
+                <p class="my-3" id="f_top">
+                    <h5 class="display-4 text-center" style="color:#222222">{{ dish.name }}</h5>
+                    <img src="{{ dish.image.url }}" class="img-responsive rounded shadow-lg" width="450px" height="300px">
+                    <h5 class="text-center my-3" style="color:#222222"><strong>Описание:</strong> {{ dish.description }}</h5>
+                    <h5 class="text-center my-3" style="color:#222222"><strong>Граммовки:</strong> {{ dish.grammers }} гр.</h5>
+                    <h5 class="text-center my-3" style="color:#222222"><strong>Цена:</strong> {{ dish.price }} руб.</h5>
+                    <form action="." method="post">
+                        {{ add_form.as_p }}
+                        {% csrf_token %}
+                        <p><input type="submit" value="Добавить в корзину"></p>
+                    </form>
+                </p>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+{% endblock %}

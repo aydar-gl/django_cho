@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Категории{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row my-5">
+            <div class="col-md-1"></div>
+            <div class="col-md-10 text-center my-4">
+                {% for category in categories %}
+                    <a href="/menu/{{ category.slug }}">
+                        <h5 class="display-4 text-center" style="color:#222222">{{ category.name }}</h5>
+                    </a>
+                {% endfor %}
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+{% endblock %}

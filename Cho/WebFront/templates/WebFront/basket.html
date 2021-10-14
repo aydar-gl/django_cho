@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Корзина{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <h1 class="display-4">Корзина</h1>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <table class="table table-bordered table-hover">
+                    <thead class="thead-dark">
+                        <tr class="text-center">
+                            <th scope="col">#</th>
+                            <th scope="col">Наименование</th>
+                            <th scope="col">Цена</th>
+                            <th scope="col">Граммовки</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for dish in list %}
+                            <tr>
+                                <td class="text-center">
+                                    <a href="/menu/{{ dish.category.slug }}/{{ dish.slug }}">
+                                        <img src="{{ dish.image.url }}" width="100px">
+                                    </a>
+                                </td>
+                                <td class="text-center">
+                                    {{ dish.name }}
+                                </td>
+                                <td class="text-center">
+                                    {{ dish.price }} руб.
+                                </td>
+                                <td class="text-center">
+                                    {{ dish.grammers }} гр.
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% if list %}
+                    <h5 class="text-center my-3" style="color:#222222"><strong>Общая сумма заказа:</strong> {{ order_price }} руб.</h5>
+                    <a href="{% url "clear_basket" %}" class="nav-link nav-link btn btn-secondary my-5" ><font color="white"><strong>Очистить корзину</strong></font></a>
+                    <fieldset>
+                        <legend>Введите данные:</legend>
+                        <form action="." method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label>ФИО</label>
+                                {{ buy_form.client_name }}
+                            </div>
+                            <div class="form-group">
+                                <label>Номер телефона</label>
+                                {{ buy_form.client_number }}
+                            </div>
+                            <div class="form-group">
+                                <label>E-mail</label>
+                                {{ buy_form.client_mail }}
+                            </div>
+                            <div class="form-group">
+                                <label>Пункт</label>
+                                {{ buy_form.station }}
+                            </div>
+                            <p><input type="submit" value="Отправить заказ"></p>
+                        </form>
+                    </fieldset>
+                {% endif %}
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+{% endblock %}
